@@ -3,7 +3,7 @@
 Part of the [commitizen](https://github.com/commitizen/cz-cli) family. Prompts for [conventional changelog](https://github.com/conventional-changelog/conventional-changelog) standard and also prompts for a mandatory JIRA issue.
 
 [![npm version](https://img.shields.io/npm/v/@digitalroute/cz-conventional-changelog-for-jira.svg?style=flat-square)](https://www.npmjs.org/package/@digitalroute/cz-conventional-changelog-for-jira)
-[![npm downloads](https://img.shields.io/npm/dm/@digitalroute/cz-conventional-changelog-for-jira.svg?style=flat-square)](http://npm-stat.com/charts.html?package=@digitalroute/cz-conventional-changelog-for-jira&from=2015-08-01)
+[![npm downloads](https://img.shields.io/npm/dm/@digitalroute/cz-conventional-changelog-for-jira.svg?style=flat-square)](http://npm-stat.com/charts.html?package=@digitalroute/cz-conventional-changelog-for-jira)
 [![Build Status](https://img.shields.io/travis/digitalroute/cz-conventional-changelog-for-jira.svg?style=flat-square)](https://travis-ci.org/digitalroute/cz-conventional-changelog-for-jira)
 
 ## Features
