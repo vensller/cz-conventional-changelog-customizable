@@ -155,7 +155,7 @@ module.exports = function(options) {
           default: options.defaultSubject,
           maxLength: maxHeaderWidth - (options.exclamationMark ? 1 : 0),
           leadingLabel: answers => {
-            const jira = answers.jira && options.jiraLocation !== 'footer' ? ` ${answers.jira}` : '';
+            const jira = answers.jira && options.jiraLocation !== 'post-body' ? ` ${answers.jira}` : '';
 
             let scope = '';
             const providedScope = getProvidedScope(answers);
