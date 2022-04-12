@@ -15,7 +15,8 @@ var defaultOptions = defaults;
 var type = 'func';
 var scope = 'everything';
 var customScope = 'custom scope';
-var jira = 'DAZ-123';
+var jira = 'dAz-123';
+var jiraUpperCase = 'DAZ-123';
 var subject = 'testing123';
 const shortBody = 'a';
 var longBody =
@@ -55,7 +56,7 @@ describe('commit message', function() {
         jira,
         subject
       })
-    ).to.equal(`${type}: ${jira} ${subject}`);
+    ).to.equal(`${type}: ${jiraUpperCase} ${subject}`);
   });
   it('only header w/ scope', function() {
     expect(
@@ -65,7 +66,7 @@ describe('commit message', function() {
         jira,
         subject
       })
-    ).to.equal(`${type}(${scope}): ${jira} ${subject}`);
+    ).to.equal(`${type}(${scope}): ${jiraUpperCase} ${subject}`);
   });
   it('header and body w/ out scope', function() {
     expect(
@@ -75,7 +76,7 @@ describe('commit message', function() {
         subject,
         body
       })
-    ).to.equal(`${type}: ${jira} ${subject}\n\n${body}`);
+    ).to.equal(`${type}: ${jiraUpperCase} ${subject}\n\n${body}`);
   });
   it('header and body w/ scope', function() {
     expect(
@@ -86,7 +87,7 @@ describe('commit message', function() {
         subject,
         body
       })
-    ).to.equal(`${type}(${scope}): ${jira} ${subject}\n\n${body}`);
+    ).to.equal(`${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${body}`);
   });
   it('header and body w/ custom scope', function() {
     expect(
@@ -98,7 +99,7 @@ describe('commit message', function() {
         subject,
         body
       })
-    ).to.equal(`${type}(${customScope}): ${jira} ${subject}\n\n${body}`);
+    ).to.equal(`${type}(${customScope}): ${jiraUpperCase} ${subject}\n\n${body}`);
   });
   it('header, body and issues w/ out scope', function() {
     expect(
@@ -109,7 +110,7 @@ describe('commit message', function() {
         body,
         issues
       })
-    ).to.equal(`${type}: ${jira} ${subject}\n\n${body}\n\n${issues}`);
+    ).to.equal(`${type}: ${jiraUpperCase} ${subject}\n\n${body}\n\n${issues}`);
   });
   it('header, body and issues w/ scope', function() {
     expect(
@@ -121,7 +122,7 @@ describe('commit message', function() {
         body,
         issues
       })
-    ).to.equal(`${type}(${scope}): ${jira} ${subject}\n\n${body}\n\n${issues}`);
+    ).to.equal(`${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${body}\n\n${issues}`);
   });
   it('header, body and long issues w/ out scope', function() {
     expect(
@@ -132,7 +133,7 @@ describe('commit message', function() {
         body,
         issues: longIssues
       })
-    ).to.equal(`${type}: ${jira} ${subject}\n\n${body}\n\n${longIssuesSplit}`);
+    ).to.equal(`${type}: ${jiraUpperCase} ${subject}\n\n${body}\n\n${longIssuesSplit}`);
   });
   it('header, body and long issues w/ scope', function() {
     expect(
@@ -145,7 +146,7 @@ describe('commit message', function() {
         issues: longIssues
       })
     ).to.equal(
-      `${type}(${scope}): ${jira} ${subject}\n\n${body}\n\n${longIssuesSplit}`
+      `${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${body}\n\n${longIssuesSplit}`
     );
   });
   it('header and long body w/ out scope', function() {
@@ -156,7 +157,7 @@ describe('commit message', function() {
         subject,
         body: longBody
       })
-    ).to.equal(`${type}: ${jira} ${subject}\n\n${longBodySplit}`);
+    ).to.equal(`${type}: ${jiraUpperCase} ${subject}\n\n${longBodySplit}`);
   });
   it('header and long body w/ scope', function() {
     expect(
@@ -167,7 +168,7 @@ describe('commit message', function() {
         subject,
         body: longBody
       })
-    ).to.equal(`${type}(${scope}): ${jira} ${subject}\n\n${longBodySplit}`);
+    ).to.equal(`${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${longBodySplit}`);
   });
   it('header, long body and issues w/ out scope', function() {
     expect(
@@ -178,7 +179,7 @@ describe('commit message', function() {
         body: longBody,
         issues
       })
-    ).to.equal(`${type}: ${jira} ${subject}\n\n${longBodySplit}\n\n${issues}`);
+    ).to.equal(`${type}: ${jiraUpperCase} ${subject}\n\n${longBodySplit}\n\n${issues}`);
   });
   it('header, long body and issues w/ scope', function() {
     expect(
@@ -191,7 +192,7 @@ describe('commit message', function() {
         issues
       })
     ).to.equal(
-      `${type}(${scope}): ${jira} ${subject}\n\n${longBodySplit}\n\n${issues}`
+      `${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${longBodySplit}\n\n${issues}`
     );
   });
   it('header, long body and long issues w/ out scope', function() {
@@ -204,7 +205,7 @@ describe('commit message', function() {
         issues: longIssues
       })
     ).to.equal(
-      `${type}: ${jira} ${subject}\n\n${longBodySplit}\n\n${longIssuesSplit}`
+      `${type}: ${jiraUpperCase} ${subject}\n\n${longBodySplit}\n\n${longIssuesSplit}`
     );
   });
   it('header, long body and long issues w/ scope', function() {
@@ -218,7 +219,7 @@ describe('commit message', function() {
         issues: longIssues
       })
     ).to.equal(
-      `${type}(${scope}): ${jira} ${subject}\n\n${longBodySplit}\n\n${longIssuesSplit}`
+      `${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${longBodySplit}\n\n${longIssuesSplit}`
     );
   });
   it('header, long body, breaking change, and long issues w/ scope', function() {
@@ -233,7 +234,7 @@ describe('commit message', function() {
         issues: longIssues
       })
     ).to.equal(
-      `${type}(${scope}): ${jira} ${subject}\n\n${longBodySplit}\n\n${breakingChange}${breaking}\n\n${longIssuesSplit}`
+      `${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${longBodySplit}\n\n${breakingChange}${breaking}\n\n${longIssuesSplit}`
     );
   });
   it('header, long body, breaking change (with prefix entered), and long issues w/ scope', function() {
@@ -248,7 +249,7 @@ describe('commit message', function() {
         issues: longIssues
       })
     ).to.equal(
-      `${type}(${scope}): ${jira} ${subject}\n\n${longBodySplit}\n\n${breakingChange}${breaking}\n\n${longIssuesSplit}`
+      `${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${longBodySplit}\n\n${breakingChange}${breaking}\n\n${longIssuesSplit}`
     );
   });
   it('header, body, breaking change, and issues w/ scope; exclamation mark enabled', function() {
@@ -264,7 +265,7 @@ describe('commit message', function() {
       },
         { ...defaultOptions, exclamationMark: true })
     ).to.equal(
-      `${type}(${scope})!: ${jira} ${subject}\n\n${body}\n\n${breakingChange}${breaking}\n\n${issues}`
+      `${type}(${scope})!: ${jiraUpperCase} ${subject}\n\n${body}\n\n${breakingChange}${breaking}\n\n${issues}`
     );
   });
   it('header, body, breaking change, and issues w/o scope; exclamation mark enabled', function() {
@@ -279,7 +280,7 @@ describe('commit message', function() {
       },
         { ...defaultOptions, exclamationMark: true })
     ).to.equal(
-      `${type}!: ${jira} ${subject}\n\n${body}\n\n${breakingChange}${breaking}\n\n${issues}`
+      `${type}!: ${jiraUpperCase} ${subject}\n\n${body}\n\n${breakingChange}${breaking}\n\n${issues}`
     );
   });
   it('skip jira task when optional', function() {
@@ -307,7 +308,7 @@ describe('commit message', function() {
         },
         { jiraLocation: 'unknown-location' }
       )
-    ).to.equal(`${type}(${scope}): ${jira} ${subject}\n\n${body}`);
+    ).to.equal(`${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${body}`);
   });
   it('pre-type jiraLocation', function() {
     expect(
@@ -321,7 +322,7 @@ describe('commit message', function() {
         },
         { jiraLocation: 'pre-type' }
       )
-    ).to.equal(`${jira} ${type}(${scope}): ${subject}\n\n${body}`);
+    ).to.equal(`${jiraUpperCase} ${type}(${scope}): ${subject}\n\n${body}`);
   });
   it('pre-description jiraLocation', function() {
     expect(
@@ -335,7 +336,7 @@ describe('commit message', function() {
         },
         { jiraLocation: 'pre-description' }
       )
-    ).to.equal(`${type}(${scope}): ${jira} ${subject}\n\n${body}`);
+    ).to.equal(`${type}(${scope}): ${jiraUpperCase} ${subject}\n\n${body}`);
   });
   it('post-description jiraLocation', function() {
     expect(
@@ -349,7 +350,7 @@ describe('commit message', function() {
         },
         { jiraLocation: 'post-description' }
       )
-    ).to.equal(`${type}(${scope}): ${subject} ${jira} \n\n${body}`);
+    ).to.equal(`${type}(${scope}): ${subject} ${jiraUpperCase} \n\n${body}`);
   });
   it('post-body jiraLocation with body', function() {
     expect(
@@ -363,7 +364,7 @@ describe('commit message', function() {
         },
         { ...defaultOptions, jiraLocation: 'post-body' }
       )
-    ).to.equal(`${type}(${scope}): ${subject}\n\n${body}\n\n${jira}`);
+    ).to.equal(`${type}(${scope}): ${subject}\n\n${body}\n\n${jiraUpperCase}`);
   });
   it('post-body jiraLocation no body', function() {
     expect(
@@ -377,7 +378,7 @@ describe('commit message', function() {
         },
         { ...defaultOptions, jiraLocation: 'post-body' }
       )
-    ).to.equal(`${type}(${scope}): ${subject}\n\n${jira}`);
+    ).to.equal(`${type}(${scope}): ${subject}\n\n${jiraUpperCase}`);
   });
   it('post-body jiraLocation with body and footer', function() {
     var footer = `${breakingChange}${breaking}`;
@@ -393,7 +394,7 @@ describe('commit message', function() {
         },
         { ...defaultOptions, jiraLocation: 'post-body' }
       )
-    ).to.equal(`${type}(${scope}): ${subject}\n\n${body}\n\n${jira}\n\n${breakingChange}${breaking}`);
+    ).to.equal(`${type}(${scope}): ${subject}\n\n${body}\n\n${jiraUpperCase}\n\n${breakingChange}${breaking}`);
   });
   it('jiraPrepend decorator', function() {
     expect(
@@ -407,7 +408,7 @@ describe('commit message', function() {
         },
         { jiraPrepend: '-' }
       )
-    ).to.equal(`${type}(${scope}): -${jira} ${subject}\n\n${body}`);
+    ).to.equal(`${type}(${scope}): -${jiraUpperCase} ${subject}\n\n${body}`);
   });
   it('jiraAppend decorator', function() {
     expect(
@@ -421,7 +422,7 @@ describe('commit message', function() {
         },
         { jiraAppend: '+' }
       )
-    ).to.equal(`${type}(${scope}): ${jira}+ ${subject}\n\n${body}`);
+    ).to.equal(`${type}(${scope}): ${jiraUpperCase}+ ${subject}\n\n${body}`);
   });
   it('jiraPrepend and jiraAppend decorators', function() {
     expect(
@@ -438,7 +439,7 @@ describe('commit message', function() {
           jiraPrepend: '['
         }
       )
-    ).to.equal(`${type}(${scope}): [${jira}] ${subject}\n\n${body}`);
+    ).to.equal(`${type}(${scope}): [${jiraUpperCase}] ${subject}\n\n${body}`);
   });
   it('jiraLocation, jiraPrepend, jiraAppend decorators', function() {
     expect(
@@ -456,7 +457,7 @@ describe('commit message', function() {
           jiraLocation: 'pre-type'
         }
       )
-    ).to.equal(`[${jira}] ${type}(${scope}): ${subject}\n\n${body}`);
+    ).to.equal(`[${jiraUpperCase}] ${type}(${scope}): ${subject}\n\n${body}`);
   });
 });
 
