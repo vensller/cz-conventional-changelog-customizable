@@ -175,6 +175,7 @@ module.exports = function(options) {
         {
           type: 'input',
           name: 'body',
+          when: !options.skipDescription,
           message:
             'Provide a longer description of the change: (press enter to skip)\n',
           default: options.defaultBody
@@ -182,6 +183,7 @@ module.exports = function(options) {
         {
           type: 'confirm',
           name: 'isBreaking',
+          when: !options.skipBreaking,
           message: 'Are there any breaking changes?',
           default: false
         },
