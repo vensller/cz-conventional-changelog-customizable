@@ -35,16 +35,12 @@ module.exports = function(options) {
     switch(location) {
       case 'pre-type':
         return jiraWithDecorators + type + scope + ': ' + subject;
-        break;
       case 'pre-description':
         return type + scope + ': ' + jiraWithDecorators + subject;
-        break;
       case 'post-description':
         return type + scope + ': ' + subject + ' ' + jiraWithDecorators;
-        break;
       case 'post-body':
         return type + scope + ': ' + subject;
-        break;
       default:
         return type + scope + ': ' + jiraWithDecorators + subject;
     }
@@ -171,15 +167,7 @@ module.exports = function(options) {
           filter: function(subject) {
             return filterSubject(subject);
           }
-        },
-        {
-          type: 'input',
-          name: 'body',
-          when: !options.skipDescription,
-          message:
-            'Provide a longer description of the change: (press enter to skip)\n',
-          default: options.defaultBody
-        },
+        },        
         {
           type: 'confirm',
           name: 'isBreaking',
@@ -232,6 +220,20 @@ module.exports = function(options) {
             return answers.isIssueAffected;
           },
           default: options.defaultIssues ? options.defaultIssues : undefined
+        },
+        {
+          type: 'confirm',
+          name: 'releaseNotes',
+          message: 'Should the commit longer description message be in release notes?',
+          default: false
+        },
+        {
+          type: 'input',
+          name: 'body',
+          when: (({ releaseNotes }) => releaseNotes),
+          message:
+            'Provide a longer description of the change for the release notes: \n',
+          validate: input => input.length > 0
         }
       ]).then(async function(answers) {
         var wrapOptions = {
@@ -255,8 +257,9 @@ module.exports = function(options) {
         var jiraWithDecorators = answers.jira ? prepend + answers.jira + append + ' ': '';
 
         // Hard limit this line in the validate
-        const head = getJiraIssueLocation(options.jiraLocation, answers.type, scope, jiraWithDecorators, answers.subject);
-
+        let head = getJiraIssueLocation(options.jiraLocation, answers.type, scope, jiraWithDecorators, answers.subject);
+        head += ` ${answers.releaseNotes ? '[RN]' : ''}`;
+        
         // Wrap these lines at options.maxLineWidth characters
         var body = answers.body ? wrap(answers.body, wrapOptions) : false;
         if (options.jiraMode && options.jiraLocation === 'post-body') {
